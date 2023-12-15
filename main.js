@@ -43,7 +43,7 @@ while(n === 0){
   let resultadoFinal = notas (notaUno, notaDos, notaTres, notaCuatro) + examen (notaExamen);
    
   if(resultadoFinal >= 4.0) {
-     n = 1;
+     //n = 1;
     alert (`Felicitaciones! Aprobó La Cursada con una Nota Final de ${resultadoFinal}`)
   }else if(resultadoFinal <= 3.9){
     //console.log(resultadoFinal)
