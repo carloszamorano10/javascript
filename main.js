@@ -6,7 +6,6 @@ let notaExamen = Number(prompt("Ingrese Calificación Examen"));
 
 
 // const notas = (A, B, C, D) => (((A + B + C + D) / 4) * 0,6);
-
 // const examen = E => (E * 0,4);
 
 function notas(A, B, C, D) {
@@ -36,22 +35,28 @@ function examen(E){
 }
 
 // examen ();
+// let resultadoFinal = notas (notaUno, notaDos, notaTres, notaCuatro) + examen (notaExamen);
 
-let resultadoFinal = notas (notaUno, notaDos, notaTres, notaCuatro) + examen (notaExamen);
+let n = 0;
 
-
-if(resultadoFinal >= 4.0) {
-    alert ("Felicitaciones! Aprobó La Cursada")
-}else if(resultadoFinal <= 3.9){
-    console.log(resultadoFinal)
-    alert ("Lo siento, Reprobó La Cursada")
-}else{
+while(n === 0){
+  let resultadoFinal = notas (notaUno, notaDos, notaTres, notaCuatro) + examen (notaExamen);
+   
+  if(resultadoFinal >= 4.0) {
+     n = 1;
+    alert (`Felicitaciones! Aprobó La Cursada con una Nota Final de ${resultadoFinal}`)
+  }else if(resultadoFinal <= 3.9){
+    //console.log(resultadoFinal)
+    alert (`Lo siento, Reprobó La Cursada con una Nota Final de ${resultadoFinal}`)
+    
+  }else{
     alert ("Ingrese Números Con Punto Ejemplo 5.0")
+  }
+
+  notaUno = Number(prompt("Ingrese Calificación Primera Entrega"));
+  notaDos = Number(prompt("Ingrese Calificación Segunda Entrega"));
+  notaTres = Number(prompt("Ingrese Calificación Tercera Entrega"));
+  notaCuatro = Number(prompt("Ingrese Calificación Cuarta Entrega"));
+  notaExamen = Number(prompt("Ingrese Calificación Examen"));
+ 
 }
-
-
-let notaUno = Number(prompt("Ingrese Calificación Primera Entrega"));
-let notaDos = Number(prompt("Ingrese Calificación Segunda Entrega"));
-let notaTres = Number(prompt("Ingrese Calificación Tercera Entrega"));
-let notaCuatro = Number(prompt("Ingrese Calificación Cuarta Entrega"));
-let notaExamen = Number(prompt("Ingrese Calificación Examen"));
