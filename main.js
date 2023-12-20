@@ -16,8 +16,8 @@ function examen(E){
 }
 
 
-for (let i = 0; i < 5; i++) {
-  let nombreAlumno = prompt("Ingrese Nombre Del Alumno");
+for (let i = 1; i < 5; i++) {
+  let nombreAlumno = prompt(`Ingrese Nombre Del Alumno ${i}`);
   let notaUno = Number(prompt("Ingrese Calificación Primera Entrega"));
   let notaDos = Number(prompt("Ingrese Calificación Segunda Entrega"));
   let notaTres = Number(prompt("Ingrese Calificación Tercera Entrega"));
@@ -34,9 +34,54 @@ for (let i = 0; i < 5; i++) {
 
 console.log(arregloAlumnos);
 
+let filtro = prompt("Ingrese Como Desea Mostrar La Lista (Reprobados / Aprobados / Todos")
 
-// let n = 0;
+if (filtro === 'Reprobados') {
+  for (const alumno of arregloAlumnos) {
+    if (alumno.promedio < 4.0) {
+      alert(`
+      Nombre: ${alumno.nombre} 
+      Promedio: ${alumno.promedio.toFixed(1)}`);
+    }
+  }
+} else if (filtro === 'Aprobados') {
+  for (const alumno of arregloAlumnos) {
+    if (alumno.promedio >= 4.0) {
+      alert(`
+      Nombre: ${alumno.nombre} 
+      Promedio: ${alumno.promedio.toFixed(1)}`);
+    }
+  }
+} else if (filtro === 'Todos') {
+  for (const alumno of arregloAlumnos) {
+    alert(`
+    Nombre: ${alumno.nombre} 
+    Promedio: ${alumno.promedio.toFixed(1)}`);
+  }
+} else {
+  alert("Opción no válida");
+}
 
+
+let alumnoEncontrado = prompt("Ingrese el Nombre del Alumno a Encontrar");
+
+for (const iterator of arregloAlumnos) {
+  if (iterator.nombre === alumnoEncontrado) {
+    alumnoEncontrado = iterator;
+    break; 
+  }
+}
+
+if (alumnoEncontrado) {
+  alert(`Alumno Encontrado correctamente: 
+    Nombre: ${alumnoEncontrado.nombre}
+    Promedio: ${alumnoEncontrado.promedio.toFixed(1)}`);
+} else {
+  alert(`Alumno No Encontrado en la Base de Datos.`);
+}
+    
+
+    // let n = 0;
 // while(n === 0){
    
 //   if(resultadoFinal >= 4.0) {
