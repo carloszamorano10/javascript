@@ -63,7 +63,7 @@ if (filtro === 'Reprobados') {
 }
 
 
-let alumnoEncontrado = prompt("Ingrese el Nombre del Alumno a Encontrar");
+let alumnoEncontrado = prompt("Ingrese el Nombre del Alumno a Buscar");
 
 for (const iterator of arregloAlumnos) {
   if (iterator.nombre === alumnoEncontrado) {
@@ -73,7 +73,7 @@ for (const iterator of arregloAlumnos) {
 }
 
 if (alumnoEncontrado) {
-  alert(`Alumno Encontrado correctamente: 
+  alert(`Alumno Encontrado: 
     Nombre: ${alumnoEncontrado.nombre}
     Promedio: ${alumnoEncontrado.promedio.toFixed(1)}`);
 } else {
