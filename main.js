@@ -1,13 +1,23 @@
-function personas(nombre, asignatura, notas, examen, promedio) {
-  this.nombre = nombre;
-  this.asignatura = asignatura;
-  this.notas = notas;
-  this.examen = examen;
-  this.promedio = promedio;
+function personas(info) {
+  this.nombre = info.nombre;
+  this.asignatura = info.asignatura;
+  this.notas = info.notas;
+  this.examen = info.examen;
+  this.promedio = info.promedio;
 }
 
-let arregloAlumnos = [];
 
+let contador = 1;
+let validarStorageAlumnos = true;
+let contadorAlumnosValidar = 0;
+
+while (validarStorageAlumnos) {
+  const alumnoStorage = JSON.parse(localStorage.getItem("Alumno" + contador));
+  if(!alumnoStorage) {
+    validarStorageAlumnos = false;
+  }
+  else contador += 1;
+}
 
 function calcularPromedio(A, B, C, D) {
   return ((A + B + C + D) / 4) * 0.6;
@@ -16,7 +26,6 @@ function calcularPromedio(A, B, C, D) {
 function calcularExamen(E) {
   return E * 0.4;
 }
-
 
 let formulario = document.getElementById("formulario");
 
@@ -31,18 +40,36 @@ formulario.addEventListener("submit", (e) => {
   let notaTres = parseFloat(document.getElementById("notaTres").value);
   let notaCuatro = parseFloat(document.getElementById("notaCuatro").value);
   let notaExamen = parseFloat(document.getElementById("notaExamen").value);
- 
+
   let resultadoNotas = calcularPromedio(notaUno, notaDos, notaTres, notaCuatro);
   let resultadoExamen = calcularExamen(notaExamen);
   let resultadoFinal = resultadoNotas + resultadoExamen;
-  const alumno = new personas(nombreAlumno, asignatura, [notaUno, notaDos, notaTres, notaCuatro], notaExamen, resultadoFinal);
 
-  arregloAlumnos.push(alumno);
-  mostrarAlumnos(arregloAlumnos);
-  console.log(arregloAlumnos);
+  const alumno = new personas({
+    nombre: nombreAlumno,
+    asignatura: asignatura,
+    notas: [notaUno, notaDos, notaTres, notaCuatro],
+    examen: notaExamen,
+    promedio: resultadoFinal.toFixed(1),
+  });
+
+  //console.log(arregloAlumnos);
+  localStorage.setItem("Alumno" + contador, JSON.stringify(alumno));
+
+  // let arregloAlumnos = obtenerAlumnosStorage();
+  // mostrarAlumnos(arregloAlumnos);
+
+  contador += 1;
 });
 
-
+const obtenerAlumnosStorage = () => {
+  let arregloAlumnos = [];
+  for (let i = 0; i < contador+1; i++) {
+    const alumnoStorage = JSON.parse(localStorage.getItem("Alumno" + (i + 1)));
+    if(alumnoStorage) arregloAlumnos.push(alumnoStorage);
+  }
+  return arregloAlumnos;
+}
 
 const mostrarAlumnos = (arregloAlumnos) => {
   contenedor.innerHTML = "";
@@ -59,6 +86,6 @@ const mostrarAlumnos = (arregloAlumnos) => {
   });
 };
 
-
-localStorage.setItem("", JSON.stringify(mostrarAlumnos));
+let arregloAlumnos = obtenerAlumnosStorage();
+mostrarAlumnos(arregloAlumnos);
 
