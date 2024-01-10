@@ -1,0 +1,12 @@
+#tituloMain{
+    text-align: center;
+}
+
+#formulario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 25%;
+    margin-left: 2%;
+}
+

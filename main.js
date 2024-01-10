@@ -1,5 +1,6 @@
-function personas(nombre, notas, examen, promedio) {
+function personas(nombre, asignatura, notas, examen, promedio) {
   this.nombre = nombre;
+  this.asignatura = asignatura;
   this.notas = notas;
   this.examen = examen;
   this.promedio = promedio;
@@ -7,99 +8,57 @@ function personas(nombre, notas, examen, promedio) {
 
 let arregloAlumnos = [];
 
-function notas(A, B, C, D) {
-  return ((A + B + C + D) / 4) * 0.6;
- }
 
-function examen(E){
+function calcularPromedio(A, B, C, D) {
+  return ((A + B + C + D) / 4) * 0.6;
+}
+
+function calcularExamen(E) {
   return E * 0.4;
 }
 
 
-for (let i = 1; i < 5; i++) {
-  let nombreAlumno = prompt(`Ingrese Nombre Del Alumno ${i}`);
-  let notaUno = Number(prompt("Ingrese Calificación Primera Entrega"));
-  let notaDos = Number(prompt("Ingrese Calificación Segunda Entrega"));
-  let notaTres = Number(prompt("Ingrese Calificación Tercera Entrega"));
-  let notaCuatro = Number(prompt("Ingrese Calificación Cuarta Entrega"));
-  let notaExamen = Number(prompt("Ingrese Calificación Examen"));
+let formulario = document.getElementById("formulario");
 
-  let resultadoFinal = notas(notaUno, notaDos, notaTres, notaCuatro) + examen(notaExamen);
+let contenedor = document.getElementById("contenedorFormulario");
 
-  
-  const alumno = new personas(nombreAlumno, [notaUno, notaDos, notaTres, notaCuatro], notaExamen, resultadoFinal);
+formulario.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let nombreAlumno = document.getElementById("nombre").value;
+  let asignatura = document.getElementById("asignatura").value;
+  let notaUno = parseFloat(document.getElementById("notaUno").value);
+  let notaDos = parseFloat(document.getElementById("notaDos").value);
+  let notaTres = parseFloat(document.getElementById("notaTres").value);
+  let notaCuatro = parseFloat(document.getElementById("notaCuatro").value);
+  let notaExamen = parseFloat(document.getElementById("notaExamen").value);
+ 
+  let resultadoNotas = calcularPromedio(notaUno, notaDos, notaTres, notaCuatro);
+  let resultadoExamen = calcularExamen(notaExamen);
+  let resultadoFinal = resultadoNotas + resultadoExamen;
+  const alumno = new personas(nombreAlumno, asignatura, [notaUno, notaDos, notaTres, notaCuatro], notaExamen, resultadoFinal);
 
   arregloAlumnos.push(alumno);
-}
-
-console.log(arregloAlumnos);
-
-let filtro = prompt("Ingrese Como Desea Mostrar La Lista (Reprobados / Aprobados / Todos")
-
-if (filtro === 'Reprobados') {
-  for (const alumno of arregloAlumnos) {
-    if (alumno.promedio < 4.0) {
-      alert(`
-      Nombre: ${alumno.nombre} 
-      Promedio: ${alumno.promedio.toFixed(1)}`);
-    }
-  }
-} else if (filtro === 'Aprobados') {
-  for (const alumno of arregloAlumnos) {
-    if (alumno.promedio >= 4.0) {
-      alert(`
-      Nombre: ${alumno.nombre} 
-      Promedio: ${alumno.promedio.toFixed(1)}`);
-    }
-  }
-} else if (filtro === 'Todos') {
-  for (const alumno of arregloAlumnos) {
-    alert(`
-    Nombre: ${alumno.nombre} 
-    Promedio: ${alumno.promedio.toFixed(1)}`);
-  }
-} else {
-  alert("Opción no válida");
-}
+  mostrarAlumnos(arregloAlumnos);
+  console.log(arregloAlumnos);
+});
 
 
-let alumnoEncontrado = prompt("Ingrese el Nombre del Alumno a Buscar");
 
-for (const iterator of arregloAlumnos) {
-  if (iterator.nombre === alumnoEncontrado) {
-    alumnoEncontrado = iterator;
-    break; 
-  }
-}
+const mostrarAlumnos = (arregloAlumnos) => {
+  contenedor.innerHTML = "";
+  arregloAlumnos.forEach((item) => {
+    let div = document.createElement("div");
+    div.innerHTML = `
+    <h2>Nombre del Alumno: ${item.nombre}</h2>
+    <p>Asignatura: ${item.asignatura}</p>
+    <p>Notas Parciales: ${item.notas}</p>
+    <p>Nota Examen: ${item.examen}</p>
+    <p>Promedio Final: ${item.promedio}</p>
+    `;
+    contenedor.append(div);
+  });
+};
 
-if (alumnoEncontrado) {
-  alert(`Alumno Encontrado: 
-    Nombre: ${alumnoEncontrado.nombre}
-    Promedio: ${alumnoEncontrado.promedio.toFixed(1)}`);
-} else {
-  alert(`Alumno No Encontrado en la Base de Datos.`);
-}
-    
 
-    // let n = 0;
-// while(n === 0){
-   
-//   if(resultadoFinal >= 4.0) {
-//      //n = 1;
-//     alert (`Felicitaciones! Aprobó La Cursada con una Nota Final de ${resultadoFinal}`)
-//   }else if(resultadoFinal <= 3.9){
-//     //console.log(resultadoFinal)
-//     alert (`Lo siento, Reprobó La Cursada con una Nota Final de ${resultadoFinal}`)
-    
-//   }else{
-//     alert ("Ingrese Números Con Punto Ejemplo 5.0")
-//   }
-
-//   notaUno = Number(prompt("Ingrese Calificación Primera Entrega"));
-//   notaDos = Number(prompt("Ingrese Calificación Segunda Entrega"));
-//   notaTres = Number(prompt("Ingrese Calificación Tercera Entrega"));
-//   notaCuatro = Number(prompt("Ingrese Calificación Cuarta Entrega"));
-//   notaExamen = Number(prompt("Ingrese Calificación Examen"));
- 
-// }
+localStorage.setItem("", JSON.stringify(mostrarAlumnos));
 
