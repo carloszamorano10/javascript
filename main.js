@@ -31,6 +31,10 @@ let formulario = document.getElementById("formulario");
 
 let contenedor = document.getElementById("contenedorFormulario");
 
+let formularioFiltros = document.getElementById("formularioFiltros");
+
+let formularioFiltros2 = document.getElementById("formularioFiltros2");
+
 formulario.addEventListener("submit", (e) => {
   e.preventDefault();
   let nombreAlumno = document.getElementById("nombre").value;
@@ -44,6 +48,8 @@ formulario.addEventListener("submit", (e) => {
   let resultadoNotas = calcularPromedio(notaUno, notaDos, notaTres, notaCuatro);
   let resultadoExamen = calcularExamen(notaExamen);
   let resultadoFinal = resultadoNotas + resultadoExamen;
+
+  location.reload();
 
   const alumno = new personas({
     nombre: nombreAlumno,
@@ -78,7 +84,7 @@ const mostrarAlumnos = (arregloAlumnos) => {
     div.innerHTML = `
     <h2>Nombre del Alumno: ${item.nombre}</h2>
     <p>Asignatura: ${item.asignatura}</p>
-    <p>Notas Parciales: ${item.notas}</p>
+    <p>Notas Parciales: ${item.notas.join(" - ")}</p>
     <p>Nota Examen: ${item.examen}</p>
     <p>Promedio Final: ${item.promedio}</p>
     `;
@@ -89,3 +95,45 @@ const mostrarAlumnos = (arregloAlumnos) => {
 let arregloAlumnos = obtenerAlumnosStorage();
 mostrarAlumnos(arregloAlumnos);
 
+formularioFiltros.addEventListener("submit", (e) => {
+  e.preventDefault(); 
+  const filtro = document.getElementById("filtro").value;
+  let alumnosFiltrados = [];
+  switch (filtro) {
+    case 'Aprobados':
+      alumnosFiltrados = arregloAlumnos.filter(item => item.promedio >= 4.0);
+      break;
+    case 'Reprobados':
+      alumnosFiltrados = arregloAlumnos.filter(item => item.promedio < 4.0);
+      break;
+    case 'Mostrar Todo':
+      alumnosFiltrados = arregloAlumnos;
+      break;
+    default:
+      alert("Ingrese un filtro válido");
+      break;
+  }
+  mostrarAlumnos(alumnosFiltrados);
+});
+
+
+formularioFiltros2.addEventListener("submit", (e) => {
+  e.preventDefault(); 
+  const filtro2 = document.getElementById("filtro2").value;
+  let filtradosAsignatura = [];
+  switch (filtro2) {
+    case 'Lenguaje':
+      filtradosAsignatura = arregloAlumnos.filter(item => item.asignatura === Lenguaje);
+      break;
+    case 'Matemáticas':
+      filtradosAsignatura = arregloAlumnos.filter(item => item.asignatura === Matemáticas);
+      break;
+    case 'Historia':
+      filtradosAsignatura = arregloAlumnos.filter(item => item.asignatura === Historia);
+      break;
+    default:
+      alert("Ingrese un filtro válido");
+      break;
+  }
+  mostrarAlumnos(filtradosAsignatura);
+});

@@ -9,19 +9,23 @@
 <body>
     <header>
       <h1 id="tituloMain">Bienvenido Docente</h1>
+
+      <h2>Ingrese Datos de Alumnos</h2>
     </header>
 
     <main>
-        <h2>Ingrese Datos de Alumnos</h2>
-
     <div>
         <form id="formulario">
             <label for="nombre">Nombre del Alumno:</label>
             <input type="text" id="nombre" name="nombre" required>
           
             <label for="asignatura">Asignatura:</label>
-            <input type="text" id="asignatura" name="asignatura" required>
-          
+            <select id="asignatura">
+                <option>Lenguaje</option>
+                <option>Matemáticas</option>
+                <option>Historia</option>
+            </select>
+                      
             <label for="notaUno">Nota Primera Entrega:</label>
             <input type="number" step="0.01" id="notaUno" name="notaUno" required>
           
@@ -39,6 +43,23 @@
           
             <button type="submit">Agregar</button>
           </form>
+
+        <form id="formularioFiltros">
+            <select id="filtro">
+                <option>Aprobados</option>
+                <option>Reprobados</option>
+                <option>Mostrar Todo</option>
+                </select>
+            <button id="filtrar">Filtrar</button>
+        </form>
+        <form id="formularioFiltros2">
+            <select id="filtro2">
+                <option>Lenguaje</option>
+                <option>Matemáticas</option>
+                <option>Historia</option>
+                </select>
+            <button id="filtrar2">Filtrar Asignatura</button>
+        </form>    
     </div>
 
     <div id="contenedorFormulario"></div>

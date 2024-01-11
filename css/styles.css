@@ -2,11 +2,29 @@
     text-align: center;
 }
 
+
 #formulario{
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 25%;
     margin-left: 2%;
+    margin-right: 5%;
 }
 
+#formularioFiltros{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 10%;
+    margin-left: 9%;
+    margin-top: 2%;
+} 
+#formularioFiltros2{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 10%;
+    margin-left: 9%;
+    margin-top: 2%;
+} 
