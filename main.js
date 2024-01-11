@@ -123,13 +123,13 @@ formularioFiltros2.addEventListener("submit", (e) => {
   let filtradosAsignatura = [];
   switch (filtro2) {
     case 'Lenguaje':
-      filtradosAsignatura = arregloAlumnos.filter(item => item.asignatura === Lenguaje);
+      filtradosAsignatura = arregloAlumnos.filter(item => item.asignatura === 'Lenguaje');
       break;
     case 'Matemáticas':
-      filtradosAsignatura = arregloAlumnos.filter(item => item.asignatura === Matemáticas);
+      filtradosAsignatura = arregloAlumnos.filter(item => item.asignatura === 'Matemáticas');
       break;
     case 'Historia':
-      filtradosAsignatura = arregloAlumnos.filter(item => item.asignatura === Historia);
+      filtradosAsignatura = arregloAlumnos.filter(item => item.asignatura === 'Historia');
       break;
     default:
       alert("Ingrese un filtro válido");
