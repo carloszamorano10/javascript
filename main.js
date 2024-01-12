@@ -35,6 +35,8 @@ let formularioFiltros = document.getElementById("formularioFiltros");
 
 let formularioFiltros2 = document.getElementById("formularioFiltros2");
 
+let btnBorrar = document.getElementById("btnBorrar");
+
 formulario.addEventListener("submit", (e) => {
   e.preventDefault();
   let nombreAlumno = document.getElementById("nombre").value;
@@ -137,3 +139,9 @@ formularioFiltros2.addEventListener("submit", (e) => {
   }
   mostrarAlumnos(filtradosAsignatura);
 });
+
+const btnLimpiar = () => {
+  contenedor.innerHTML = "";
+}
+
+btnBorrar.addEventListener("click", btnLimpiar);
