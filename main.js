@@ -61,11 +61,7 @@ formulario.addEventListener("submit", (e) => {
     promedio: resultadoFinal.toFixed(1),
   });
 
-  //console.log(arregloAlumnos);
   localStorage.setItem("Alumno" + contador, JSON.stringify(alumno));
-
-  // let arregloAlumnos = obtenerAlumnosStorage();
-  // mostrarAlumnos(arregloAlumnos);
 
   contador += 1;
 });
@@ -141,7 +137,36 @@ formularioFiltros2.addEventListener("submit", (e) => {
 });
 
 const btnLimpiar = () => {
-  contenedor.innerHTML = "";
+  Swal.fire({
+    title: "Eliminar Todo?",
+    text: "No Se Podrá Recuperar Datos!",
+    icon: "warning",
+    background: "#f5f5f5",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sí, Eliminar!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      localStorage.clear();
+      Swal.fire({
+        title: "Eliminado!",
+        text: "Datos Eliminados.",
+        icon: "success",
+        background: "#f5f5f5",
+      });
+      setTimeout(() => {
+        location.reload();
+      },2000);
+    }else{
+      Swal.fire({
+        title: "Sin Eliminar",
+        text: "Se Manutiveron los Datos.",
+        icon: "error",
+        background: "#f5f5f5",
+      });
+    }
+  });
 }
 
 btnBorrar.addEventListener("click", btnLimpiar);
