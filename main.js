@@ -37,6 +37,7 @@ let formularioFiltros2 = document.getElementById("formularioFiltros2");
 
 let btnBorrar = document.getElementById("btnBorrar");
 
+
 formulario.addEventListener("submit", (e) => {
   e.preventDefault();
   let nombreAlumno = document.getElementById("nombre").value;
@@ -52,7 +53,7 @@ formulario.addEventListener("submit", (e) => {
   let resultadoFinal = resultadoNotas + resultadoExamen;
 
   location.reload();
-
+  
   const alumno = new personas({
     nombre: nombreAlumno,
     asignatura: asignatura,
@@ -74,10 +75,9 @@ const obtenerAlumnosStorage = () => {
   }
   return arregloAlumnos;
 }
-
 const mostrarAlumnos = (arregloAlumnos) => {
   contenedor.innerHTML = "";
-  arregloAlumnos.forEach((item) => {
+  arregloAlumnos.forEach((item, index) => {
     let div = document.createElement("div");
     div.innerHTML = `
     <h2>Nombre del Alumno: ${item.nombre}</h2>
@@ -85,9 +85,23 @@ const mostrarAlumnos = (arregloAlumnos) => {
     <p>Notas Parciales: ${item.notas.join(" - ")}</p>
     <p>Nota Examen: ${item.examen}</p>
     <p>Promedio Final: ${item.promedio}</p>
+    <button class="btnBorrarUno" data-index="${index}">Eliminar</button>
     `;
     contenedor.append(div);
   });
+
+  document.querySelectorAll(".btnBorrarUno").forEach(button => {
+    button.addEventListener("click", borrarUno);
+  });
+};
+
+const borrarUno = (event) => {
+  const indexToRemove = event.target.getAttribute("data-index");
+  localStorage.removeItem("Alumno" + (parseInt(indexToRemove) + 1));
+
+  
+  arregloAlumnos = obtenerAlumnosStorage();
+  mostrarAlumnos(arregloAlumnos);
 };
 
 let arregloAlumnos = obtenerAlumnosStorage();
@@ -123,7 +137,7 @@ formularioFiltros2.addEventListener("submit", (e) => {
     case 'Lenguaje':
       filtradosAsignatura = arregloAlumnos.filter(item => item.asignatura === 'Lenguaje');
       break;
-    case 'Matemáticas':
+      case 'Matemáticas':
       filtradosAsignatura = arregloAlumnos.filter(item => item.asignatura === 'Matemáticas');
       break;
     case 'Historia':
@@ -157,7 +171,7 @@ const btnLimpiar = () => {
       });
       setTimeout(() => {
         location.reload();
-      },2000);
+      },1000);
     }else{
       Swal.fire({
         title: "Sin Eliminar",
@@ -170,3 +184,9 @@ const btnLimpiar = () => {
 }
 
 btnBorrar.addEventListener("click", btnLimpiar);
+
+let btnBorrarUno = document.getElementById("btnBorrarUno");
+
+btnBorrarUno.addEventListener("click", () =>{
+   localStorage.removeItem("Alumno" + contador);
+})
