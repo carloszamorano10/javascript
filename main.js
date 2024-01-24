@@ -79,6 +79,7 @@ const mostrarAlumnos = (arregloAlumnos) => {
   contenedor.innerHTML = "";
   arregloAlumnos.forEach((item, index) => {
     let div = document.createElement("div");
+    div.classList.add("alumnosDiv");
     div.innerHTML = `
     <h2>Nombre del Alumno: ${item.nombre}</h2>
     <p>Asignatura: ${item.asignatura}</p>
