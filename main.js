@@ -87,6 +87,7 @@ const mostrarAlumnos = (arregloAlumnos) => {
     <p>Nota Examen: ${item.examen}</p>
     <p>Promedio Final: ${item.promedio}</p>
     <button class="btnBorrarUno" data-index="${index}">Eliminar</button>
+    <hr/>
     `;
     contenedor.append(div);
   });
@@ -201,6 +202,7 @@ const traerAlumnosBd = async () => {
     <p>Nota Examen: ${newItem.examen}</p>
     <p>Promedio Final: ${newItem.promedio}</p>
     <button class="btnBorrarUno" data-index="${index}">Eliminar</button>
+    <hr/>
     `;
     contenedor.append(div);
   });
