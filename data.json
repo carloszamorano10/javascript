@@ -1,0 +1,5 @@
+[
+{"nombre": "Cristian", "asignatura": "Lenguaje", "notas": [4.5, 5, 3.4, 4.3], "examen": 5.5, "promedio": 4.8},
+{"nombre": "Carlos",   "asignatura": "Lenguaje",   "notas": [5, 5.2, 4.1, 6.3],   "examen": 5,   "promedio": 5.1}
+]
+

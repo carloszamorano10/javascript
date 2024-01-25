@@ -186,8 +186,23 @@ const btnLimpiar = () => {
 
 btnBorrar.addEventListener("click", btnLimpiar);
 
-let btnBorrarUno = document.getElementById("btnBorrarUno");
 
-btnBorrarUno.addEventListener("click", () =>{
-   localStorage.removeItem("Alumno" + contador);
-})
+const traerAlumnosBd = async () => {
+  const response = await fetch("./data.json");
+  const data = await response.json();
+
+  data.forEach((newItem, index) => {
+    let div = document.createElement("div");
+    div.classList.add("alumnosDiv");
+    div.innerHTML = `
+    <h2>Nombre del Alumno: ${newItem.nombre}</h2>
+    <p>Asignatura: ${newItem.asignatura}</p>
+    <p>Notas Parciales: ${newItem.notas.join(" - ")}</p>
+    <p>Nota Examen: ${newItem.examen}</p>
+    <p>Promedio Final: ${newItem.promedio}</p>
+    <button class="btnBorrarUno" data-index="${index}">Eliminar</button>
+    `;
+    contenedor.append(div);
+  });
+}
+traerAlumnosBd();
