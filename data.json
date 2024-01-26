@@ -1,5 +1,6 @@
 [
 {"nombre": "Cristian", "asignatura": "Lenguaje", "notas": [4.5, 5, 3.4, 4.3], "examen": 5.5, "promedio": 4.8},
+{"nombre": "Juan", "asignatura": "Historia", "notas": [4, 3.2, 3, 4.5], "examen": 3.2, "promedio": 3.5},
 {"nombre": "Carlos",   "asignatura": "Lenguaje",   "notas": [5, 5.2, 4.1, 6.3],   "examen": 5,   "promedio": 5.1}
 ]
 

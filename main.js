@@ -192,19 +192,21 @@ const traerAlumnosBd = async () => {
   const response = await fetch("./data.json");
   const data = await response.json();
 
-  data.forEach((newItem, index) => {
+  data.forEach((item, index) => {
+    localStorage.setItem("Alumno" + (contador + index), JSON.stringify(item));
     let div = document.createElement("div");
     div.classList.add("alumnosDiv");
     div.innerHTML = `
-    <h2>Nombre del Alumno: ${newItem.nombre}</h2>
-    <p>Asignatura: ${newItem.asignatura}</p>
-    <p>Notas Parciales: ${newItem.notas.join(" - ")}</p>
-    <p>Nota Examen: ${newItem.examen}</p>
-    <p>Promedio Final: ${newItem.promedio}</p>
-    <button class="btnBorrarUno" data-index="${index}">Eliminar</button>
-    <hr/>
+      <h2>Nombre del Alumno: ${item.nombre}</h2>
+      <p>Asignatura: ${item.asignatura}</p>
+      <p>Notas Parciales: ${item.notas.join(" - ")}</p>
+      <p>Nota Examen: ${item.examen}</p>
+      <p>Promedio Final: ${item.promedio}</p>
+      <button class="btnBorrarUno" data-index="${index}">Eliminar</button>
+      <hr/>
     `;
-    contenedor.append(div);
+   
   });
+  contador += data.length;
 }
 traerAlumnosBd();
