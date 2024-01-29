@@ -30,8 +30,9 @@ button{
 }
 
 button:hover{
-    background-color: #f4f5de;
+    background-color: #a6fadd;
     border: 1px solid rgba(0, 0, 0, 0.596);
+    
 }
 
 #datosAlumnos{
