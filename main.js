@@ -81,7 +81,7 @@ const mostrarAlumnos = (arregloAlumnos) => {
     let div = document.createElement("div");
     div.classList.add("alumnosDiv");
     div.innerHTML = `
-    <h2>Nombre del Alumno: ${item.nombre}</h2>
+    <h2>Alumno: ${item.nombre}</h2>
     <p>Asignatura: ${item.asignatura}</p>
     <p>Notas Parciales: ${item.notas.join(" - ")}</p>
     <p>Nota Examen: ${item.examen}</p>
@@ -197,7 +197,7 @@ const traerAlumnosBd = async () => {
     let div = document.createElement("div");
     div.classList.add("alumnosDiv");
     div.innerHTML = `
-      <h2>Nombre del Alumno: ${item.nombre}</h2>
+      <h2>Alumno: ${item.nombre}</h2>
       <p>Asignatura: ${item.asignatura}</p>
       <p>Notas Parciales: ${item.notas.join(" - ")}</p>
       <p>Nota Examen: ${item.examen}</p>
