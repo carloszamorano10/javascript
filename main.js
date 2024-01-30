@@ -13,11 +13,9 @@ let contadorAlumnosValidar = 0;
 
 while (validarStorageAlumnos) {
   const alumnoStorage = JSON.parse(localStorage.getItem("Alumno" + contador));
-  if(!alumnoStorage) {
-    validarStorageAlumnos = false;
-  }
-  else contador += 1;
+  validarStorageAlumnos = !alumnoStorage ? false : (contador += 1);
 }
+
 
 function calcularPromedio(A, B, C, D) {
   return ((A + B + C + D) / 4) * 0.6;
@@ -209,4 +207,7 @@ const traerAlumnosBd = async () => {
   });
   contador += data.length;
 }
-traerAlumnosBd();
+
+if (contador === 1) {
+  traerAlumnosBd();
+}

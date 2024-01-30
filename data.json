@@ -1,10 +1,19 @@
 [
-{"nombre": "Cristian", "asignatura": "Lenguaje", "notas": [4.5, 5, 3.4, 4.3], "examen": 5.5, "promedio": 4.8},
-{"nombre": "Juan", "asignatura": "Historia", "notas": [3.3, 5.4, 2.3, 4], "examen": 3.8, "promedio": 3.8},
+{"nombre": "Alexis", "asignatura": "Lenguaje", "notas": [4.5, 5, 3.4, 4.3], "examen": 5.5, "promedio": 4.8},
+{"nombre": "Cristian", "asignatura": "Historia", "notas": [3.3, 5.4, 2.3, 4], "examen": 3.8, "promedio": 3.8},
 {"nombre": "Juaquin", "asignatura": "Historia", "notas": [4, 5.5, 6.2, 3], "examen": 4.4, "promedio": 4.6},
 {"nombre": "Mario", "asignatura": "Matemáticas", "notas": [6.2, 4.5, 4, 5.2], "examen": 3.4, "promedio": 4.3},
 {"nombre": "Martín", "asignatura": "Matemáticas", "notas": [5, 3.4, 3.7, 5], "examen": 4.4, "promedio": 4.3},
 {"nombre": "Manuel", "asignatura": "Historia", "notas": [4.5, 6, 3.2, 4], "examen": 4.4, "promedio": 4.4},
-{"nombre": "Carlos",   "asignatura": "Lenguaje",   "notas": [3.3, 4, 2, 4],   "examen": 3.4,   "promedio": 3.4}
+{"nombre": "Jose", "asignatura": "Historia", "notas": [3.7, 4, 2.8, 6], "examen": 4.4, "promedio": 4.2},
+{"nombre": "Daniel", "asignatura": "Historia", "notas": [4.2, 4.3, 2.4, 3.4], "examen": 3.3, "promedio": 3.5},
+{"nombre": "Jorge", "asignatura": "Lenguaje", "notas": [4.7, 3.5, 5.8, 2.3], "examen": 2.5, "promedio": 3.4},
+{"nombre": "Pedro", "asignatura": "Matemáticas", "notas": [6.2, 4.5, 3.3, 4.2], "examen": 4.5, "promedio": 4.5},
+{"nombre": "Juan", "asignatura": "Historia", "notas": [4.8, 2.3, 3.8, 2.6], "examen": 3.3, "promedio": 3.3},
+{"nombre": "Cristobal", "asignatura": "Lenguaje", "notas": [6.6, 4.5, 3.6, 6.5], "examen": 4.2, "promedio": 4.9},
+{"nombre": "Daniela", "asignatura": "Matemáticas", "notas": [4.8, 6.2, 3.5, 5.4], "examen": 2.5, "promedio": 4.0},
+{"nombre": "Javiera", "asignatura": "Matemáticas", "notas": [5.7, 3.5, 4.6, 3.3], "examen": 5.7, "promedio": 4.8},
+{"nombre": "Miguel", "asignatura": "Lenguaje", "notas": [4.2, 3.6, 2.6, 5.7], "examen": 3.3, "promedio": 3.7},
+{"nombre": "Carlos",   "asignatura": "Lenguaje",   "notas": [5.5, 6.8, 4.5, 4.2],   "examen": 3.4,   "promedio": 4.5}
 ]
 
